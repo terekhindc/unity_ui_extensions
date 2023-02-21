@@ -31,11 +31,13 @@ namespace TerekhinDC.UI_Extensions.Components
 
         private void Update()
         {
+            if (!_dropdown.IsExpanded) return;
+            
             if (!Input.anyKeyDown || 
                 Input.GetMouseButtonDown(0) ||
                 Input.GetMouseButtonDown(1) ||
                 Input.GetMouseButtonDown(2)) return;
-            
+
             if (Input.GetKeyDown(KeyCode.Backspace) && !string.IsNullOrEmpty(_searchResult)) 
                 _searchResult = _searchResult.TrimEnd(_searchResult[^1]);
             else if (!Input.GetKeyDown(KeyCode.Backspace)) _searchResult+=Input.inputString;

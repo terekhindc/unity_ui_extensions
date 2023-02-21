@@ -28,6 +28,7 @@ namespace TerekhinDC.PhoneCodes
         private static readonly Dictionary<string, string> PhoneCodes = new Dictionary<string, string>();
         private TMP_Dropdown _countries;
         public TMP_InputField phoneCode;
+        public TMP_InputField phoneNumber;
         
         private void Awake ()
         {
@@ -44,7 +45,7 @@ namespace TerekhinDC.PhoneCodes
 
         private void Call(int value)
         {
-            phoneCode.text = GetPhoneNumber(_countries.options[value].text);
+            phoneCode.text = GetCountryPhoneCode(_countries.options[value].text);
         }
 
         private List <string> GetCountriesList ()
@@ -52,9 +53,10 @@ namespace TerekhinDC.PhoneCodes
             return PhoneCodes.Keys.ToList();
         }
 
-        private string GetPhoneNumber(string country)
+        private static string GetCountryPhoneCode(string country)
         {
             return PhoneCodes[country];
         }
+        
     }
 }
